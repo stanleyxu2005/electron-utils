@@ -1,0 +1,17 @@
+{
+  "name": "electron-lib",
+  "description": "Help to create Electron application more easily",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "keywords": ["electron", "helper", "util"],
+  "homepage": "https://github.com/stanleyxu2005/electron-lib",
+  "author": "Qian Xu (https://github.com/stanleyxu2005)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stanleyxu2005/electron-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stanleyxu2005/electron-lib/issues"
+  },
+  "main": "index.js"
+}
