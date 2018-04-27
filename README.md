@@ -16,12 +16,12 @@ elib.registerAppProtocol()
 
 ## Window Creation and Management
 
-```javacript
-const elib = require('electron-lib')
+```javascript
+const {windows} = require('electron-lib')
 const options = {width: 600, height: 400}
-elib.windows.createOrActivate('welcome', 'app://views/welcome/index.html', options)
+windows.createOrActivate('welcome', 'app://views/welcome/index.html', options)
 // some time later...
-elib.windows.activate('welcome')
+windows.activate('welcome')
 ```
 
 ## IPC Between Browser Window and Main Process
@@ -30,11 +30,12 @@ The default ipc methods are too complex. We need just one line
 
 ```javascript
 // In main process
-const elib = require('electron-lib')
-elib.ipc.registerIPCHandler('newwin', (url, name) => {
-  elib.windows.createOrActivate(name, url, {width: 640, height: 480})
+const {ipc, windows} = require('electron-lib')
+ipc.registerIPCHandler('newwin', (url, name) => {
+  windows.createOrActivate(name, url, {width: 640, height: 480})
 })
 
 // In renderer process (browser window)
+const {ipc} = require('electron-lib')
 ipc.handleIPCRequest('newwin', ['https://github.com/', 'github'])
 ```
