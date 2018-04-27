@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
+  registerAppProtocol: require('./lib/protocol'),
   ipc: require('./lib/ipc'),
-  protocol: require('./lib/protocol'),
   windows: require('./lib/windows')
 }
