@@ -1,7 +1,7 @@
 {
   "name": "electron-lib",
   "description": "Help to create Electron application more easily",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "Apache-2.0",
   "keywords": ["electron", "helper", "util"],
   "homepage": "https://github.com/stanleyxu2005/electron-lib",
@@ -13,5 +13,8 @@
   "bugs": {
     "url": "https://github.com/stanleyxu2005/electron-lib/issues"
   },
-  "main": "index.js"
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "latest"
+  }
 }

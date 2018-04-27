@@ -1,33 +1,40 @@
-# Node-Exit
+# Electron-Lib
 
-[![npm version](https://badge.fury.io/js/node-exit.svg)](http://badge.fury.io/js/node-exit) 
+[![npm version](https://badge.fury.io/js/electron-lib.svg)](http://badge.fury.io/js/electron-lib) 
 
-A simple process exit hook to make sure you can run your clean up code before node process exits. 
+Some helper functions to accelerate your Electron development work
 
-## Code Example
+## Register App Protocol
 
-The application uses `pm2` to manage processes. When user presses <kbd>CTRL</kbd>+<kbd>C</kbd> to
-kill application, the signal will be sent to child processes as well. `pm2` will try to recover
-these processes. With this module, we can tell `pm2` no longer monit terminated processes.
+Why you need to use file protocol or local file path to locate your files? With the follow code, you can use `app://views/welcome/index.html` to locate `file://path/to/app/views/welcome/index.html`
 
 In `app.js`
 ```javascript
-const ne = require('node-exit')
-
-ne.registerExitHandler((isExpectedExit, error) => {
-  if (!isExpectedExit) {
-    console.error('This is not an expected exit', error)
-  }
-})
+const elib = require('electron-lib')
+elib.registerAppProtocol()
 ```
 
-In `pm2.js`
-```javascript
-const ne = require('node-exit')
-const pm2 = require('pm2')
+## Window Creation and Management
 
-pm2.connect(false)
-ne.on('exit', (isExpectedExit) => {
-  pm2.killDaemon()
+```javacript
+const elib = require('electron-lib')
+const options = {width: 600, height: 400}
+elib.windows.createOrActivate('welcome', 'app://views/welcome/index.html', options)
+// some time later...
+elib.windows.activate('welcome')
+```
+
+## IPC Between Browser Window and Main Process
+
+The default ipc methods are too complex. We need just one line
+
+```javascript
+// In main process
+const elib = require('electron-lib')
+elib.ipc.registerIPCHandler('newwin', (url, name) => {
+  elib.windows.createOrActivate(name, url, {width: 640, height: 480})
 })
+
+// In renderer process (browser window)
+ipc.handleIPCRequest('newwin', ['https://github.com/', 'github'])
 ```
