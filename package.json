@@ -1,7 +1,7 @@
 {
   "name": "electron-lib",
   "description": "Help to create Electron application more easily",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "Apache-2.0",
   "keywords": ["electron", "helper", "util"],
   "homepage": "https://github.com/stanleyxu2005/electron-lib",
