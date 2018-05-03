@@ -1,7 +1,7 @@
 {
   "name": "electron-utils",
   "description": "Useful utilities for developing Electron apps and modules",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "Apache-2.0",
   "keywords": ["electron", "helper", "util"],
   "homepage": "https://github.com/stanleyxu2005/electron-utils",
